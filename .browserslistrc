@@ -1,0 +1,18 @@
+# Configuración de compatibilidad para WebView en Windows 11 MDM Enrollment
+# El WebView usado en Settings > Accounts > Work or School puede ser EdgeHTML (más antiguo)
+# o WebView2 (Chromium). Configuramos para máxima compatibilidad con EdgeHTML (Edge 18)
+# que es más restrictivo y asegura compatibilidad con ambos.
+
+# Producción (EdgeHTML Edge 18+ y WebView2)
+> 0.2%
+last 2 versions
+Edge >= 18
+IE >= 11
+not dead
+not op_mini all
+
+# Desarrollo
+last 1 chrome version
+last 1 firefox version
+last 1 safari version
+

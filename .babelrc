@@ -1,0 +1,44 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": 3,
+        "targets": {
+          "ie": "11",
+          "edge": "18"
+        },
+        "modules": "auto",
+        "forceAllTransforms": true,
+        "shippedProposals": false,
+        "loose": false
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "classic",
+        "development": false,
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment"
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false,
+        "absoluteRuntime": false,
+        "corejs": false
+      }
+    ],
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "compact": false,
+  "comments": true
+}
+
