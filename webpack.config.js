@@ -12,7 +12,10 @@ module.exports = {
       arrowFunction: false,
       const: false,
       destructuring: false,
-      forOf: false
+      forOf: false,
+      bigIntLiteral: false,
+      dynamicImport: false,
+      module: false
     }
   },
   module: {
@@ -70,13 +73,19 @@ module.exports = {
     usedExports: false,
     sideEffects: false,
     moduleIds: 'deterministic',
-    chunkIds: 'deterministic'
+    chunkIds: 'deterministic',
+    // Evitar optimizaciones que pueden generar código incompatible
+    concatenateModules: false,
+    splitChunks: false
   },
-  // Asegurar compatibilidad con WebView - deshabilitar características modernas
+  // Asegurar compatibilidad con WebView
   target: 'web',
   // Deshabilitar características modernas de webpack que pueden causar problemas
   experiments: {
     topLevelAwait: false
+  },
+  // Configuración adicional para compatibilidad
+  node: {
+    global: false
   }
 };
-
