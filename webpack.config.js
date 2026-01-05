@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[contenthash].js',
+    filename: process.env.NODE_ENV === 'production' ? 'bundle.[hash].js' : 'bundle.js',
     publicPath: '/'
   },
   module: {
