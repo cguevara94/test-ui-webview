@@ -12,7 +12,8 @@
         "modules": "auto",
         "forceAllTransforms": true,
         "shippedProposals": false,
-        "loose": false
+        "loose": false,
+        "debug": false
       }
     ],
     [
