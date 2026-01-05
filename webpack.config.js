@@ -1,22 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
-    clean: true,
-    publicPath: '/',
-    environment: {
-      arrowFunction: false,
-      const: false,
-      destructuring: false,
-      forOf: false,
-      bigIntLiteral: false,
-      dynamicImport: false,
-      module: false
-    }
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -38,6 +29,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
@@ -59,9 +51,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public')
-    },
+    contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 3000,
     historyApiFallback: true,
@@ -69,21 +59,10 @@ module.exports = {
   },
   // Optimizaciones para compatibilidad WebView
   optimization: {
-    minimize: false,
-    usedExports: false,
-    sideEffects: false,
-    moduleIds: 'deterministic',
-    chunkIds: 'deterministic',
-    // Evitar optimizaciones que pueden generar código incompatible
-    concatenateModules: false,
-    splitChunks: false
+    minimize: false
   },
   // Asegurar compatibilidad con WebView
   target: 'web',
-  // Deshabilitar características modernas de webpack que pueden causar problemas
-  experiments: {
-    topLevelAwait: false
-  },
   // Configuración adicional para compatibilidad
   node: {
     global: false
