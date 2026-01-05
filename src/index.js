@@ -1,5 +1,20 @@
-// Polyfills para compatibilidad con WebView - deben ir primero
+// Polyfill para globalThis DEBE ir PRIMERO - antes de cualquier import
+// Edge 18 no soporta globalThis nativamente
+(function() {
+  if (typeof globalThis === 'undefined') {
+    if (typeof self !== 'undefined') {
+      self.globalThis = self;
+    } else if (typeof window !== 'undefined') {
+      window.globalThis = window;
+    } else if (typeof global !== 'undefined') {
+      global.globalThis = global;
+    }
+  }
+})();
+
+// Polyfills para compatibilidad con WebView - después del polyfill de globalThis
 import 'core-js/stable';
+import 'core-js/stable/global-this';
 import 'regenerator-runtime/runtime';
 
 import React from 'react';

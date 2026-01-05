@@ -40,6 +40,21 @@
             user-select: text;
         }
     </style>
+    <!-- Polyfill para globalThis - DEBE ejecutarse ANTES de cualquier script -->
+    <script>
+        // Polyfill para globalThis (compatibilidad Edge 18)
+        (function() {
+            if (typeof globalThis === 'undefined') {
+                if (typeof self !== 'undefined') {
+                    self.globalThis = self;
+                } else if (typeof window !== 'undefined') {
+                    window.globalThis = window;
+                } else if (typeof global !== 'undefined') {
+                    global.globalThis = global;
+                }
+            }
+        })();
+    </script>
 </head>
 <body>
     <noscript>

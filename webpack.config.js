@@ -13,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!(react|react-dom|react-router|react-router-dom|@remix-run|scheduler|object-assign)\/).*/,
+        exclude: /node_modules\/(?!(react|react-dom|react-router|react-router-dom|@remix-run|scheduler|object-assign|core-js)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {
